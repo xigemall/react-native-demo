@@ -1,30 +1,36 @@
-import React from 'react';
-import {BackHandler, ToastAndroid, Platform, Alert} from 'react-native';
-import {Router, Scene, Tabs, Actions} from 'react-native-router-flux';
+import React,{Component} from 'react';
+import {BackHandler, ToastAndroid, Platform, Alert,Text,View} from 'react-native';
+import {Router, Stack, Scene, Tabs, Actions} from 'react-native-router-flux';
 
 import Index from '../pages/Index';
 import User from '../pages/User';
 import My from '../pages/user/Index';
+import BasicLayout from '../layouts/BasicLayout';
 
-class Routes extends React.Component {
-    componentDidMount() {
-        if (Platform.OS === 'android') {
-            BackHandler.addEventListener('hardwareBackPress', this.androidBackHandler);
+class Routes extends Component {
+
+    /**
+     * android 返回与退出app操作
+     * @returns {boolean}
+     */
+    backAndroidHandler = () => {
+        const currentScene = Actions.currentScene;
+        // 菜单栏Scene
+        const tabScene = ['_index', '_user'];
+
+        if (tabScene.includes(currentScene)) {
+            // 退出app
+            return this.onExitApp();
+        } else {
+            // 返回操作
+            Actions.pop();
+            return true;
         }
-    }
-
-    componentWillUnmount() {
-        if (Platform.OS === 'android') {
-            BackHandler.removeEventListener('hardwareBackPress', this.androidBackHandler);
-        }
-    }
-
-    androidBackHandler = () => {
-        console.log(Platform)
-        Actions.pop();
-        // this.onExitApp();
-        return true;
     };
+    /**
+     * 退出app
+     * @returns {boolean}
+     */
     onExitApp = () => {
         if (this.outTime && this.outTime + 2000 > Date.now()) {
             BackHandler.exitApp();
@@ -36,20 +42,38 @@ class Routes extends React.Component {
     };
 
     render() {
+        const tabsAttr = Platform.OS === 'ios' ?
+            {back: true, onBack: this.onExitApp}
+            :
+            {};
+
+        const routerAttr = {
+            // 允许在Android中自定义控制返回按钮
+            backAndroidHandler: this.backAndroidHandler,
+        };
         return (
-            <Router>
-                <Scene key="root">
+            <Router
+                {...routerAttr}
+            >
+                <Stack key="root">
                     <Tabs
                         hideNavBar={true}
-                        back
-                        onBack={this.onExitApp}
+                        {...tabsAttr}
                     >
-                        <Scene path="/index" key="index" component={Index} title="首页" initial={true}/>
+                        <Scene path="/index" key="index" component={Index} title="首页" initial={true}  />
                         <Scene path="/user" key="user" component={User} title="我的" />
                     </Tabs>
 
                     <Scene path="/my" key="my" component={My} title="my" />
-                </Scene>
+                </Stack>
+
+                {/*<Scene key="root">*/}
+                {/*<Tabs hideNavBar={true} tabBarComponent={BasicLayout}>*/}
+                {/*<Scene path="/index" key="index"  title="首页"  component={Index} initial={true}/>*/}
+                {/*<Scene path="/user" key="user" component={User} title="我的" />*/}
+                {/*</Tabs>*/}
+                {/*<Scene path="/my" key="my" component={My} title="my" />*/}
+                {/*</Scene>*/}
             </Router>
         );
     }
