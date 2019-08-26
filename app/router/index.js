@@ -67,13 +67,13 @@ class Routes extends Component {
                     <Scene path="/my" key="my" component={My} title="my" />
                 </Stack>
 
-                {/*<Scene key="root">*/}
-                {/*<Tabs hideNavBar={true} tabBarComponent={BasicLayout}>*/}
-                {/*<Scene path="/index" key="index"  title="首页"  component={Index} initial={true}/>*/}
-                {/*<Scene path="/user" key="user" component={User} title="我的" />*/}
-                {/*</Tabs>*/}
-                {/*<Scene path="/my" key="my" component={My} title="my" />*/}
-                {/*</Scene>*/}
+                {/*<Stack key="root">*/}
+                    {/*<Tabs hideNavBar={true} tabBarComponent={BasicLayout}>*/}
+                        {/*<Scene path="/index" key="index"  title="首页" component={Index} initial={true} />*/}
+                        {/*<Scene path="/user" key="user" component={User} title="我的" />*/}
+                    {/*</Tabs>*/}
+                    {/*<Scene path="/my" key="my" component={My} title="my" />*/}
+                {/*</Stack>*/}
             </Router>
         );
     }
