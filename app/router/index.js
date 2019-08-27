@@ -6,6 +6,7 @@ import Index from '../pages/Index';
 import User from '../pages/User';
 import My from '../pages/user/Index';
 import BasicLayout from '../layouts/BasicLayout';
+import NavBar from '../layouts/NavBar';
 
 class Routes extends Component {
 
@@ -59,6 +60,7 @@ class Routes extends Component {
                     <Tabs
                         hideNavBar={true}
                         {...tabsAttr}
+                        navBar={NavBar}
                     >
                         <Scene path="/index" key="index" component={Index} title="首页" initial={true}  />
                         <Scene path="/user" key="user" component={User} title="我的" />
