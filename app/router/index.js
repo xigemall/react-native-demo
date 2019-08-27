@@ -53,6 +53,13 @@ class Routes extends Component {
             // 允许在Android中自定义控制返回按钮
             backAndroidHandler: this.backAndroidHandler,
         };
+        const TabBarItemIcon = ({tintColor,path,title})=>{
+            if(path === '/index'){
+                return <Icon name="home" color={tintColor}/>
+            }else if(path === '/user'){
+                return <Icon name="user" color={tintColor}/>
+            }
+        }
         return (
             <Router
                 {...routerAttr}
@@ -61,22 +68,14 @@ class Routes extends Component {
                     <Tabs
                         hideNavBar={true}
                         {...tabsAttr}
-                        navBar={NavBar}
+                        // navBar={NavBar}
                     >
-                        <Scene path="/index" key="index" component={Index} title="首页" initial={true}  />
-                        <Scene path="/user" key="user" component={User} title="我的" />
+                        <Scene path="/index" key="index" component={Index} title="首页" initial={true} icon={TabBarItemIcon} />
+                        <Scene path="/user" key="user" component={User} title="我的" icon={TabBarItemIcon} />
                     </Tabs>
 
                     <Scene path="/my" key="my" component={My} title="my" />
                 </Stack>
-
-                {/*<Stack key="root">*/}
-                    {/*<Tabs hideNavBar={true} tabBarComponent={BasicLayout}>*/}
-                        {/*<Scene path="/index" key="index"  title="首页" component={Index} initial={true} />*/}
-                        {/*<Scene path="/user" key="user" component={User} title="我的" />*/}
-                    {/*</Tabs>*/}
-                    {/*<Scene path="/my" key="my" component={My} title="my" />*/}
-                {/*</Stack>*/}
             </Router>
         );
     }
