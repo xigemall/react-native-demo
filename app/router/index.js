@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {BackHandler, ToastAndroid, Platform, Alert,Text,View} from 'react-native';
 import {Router, Stack, Scene, Tabs, Actions} from 'react-native-router-flux';
+import { Icon} from '@ant-design/react-native';
 
 import Index from '../pages/Index';
 import User from '../pages/User';
