@@ -7,6 +7,8 @@ import Index from '../pages';
 import My from '../pages/user';
 import NavBar from '../layouts/NavBar';
 
+import Login from '../pages/login';
+
 class Routes extends Component {
 
     /**
@@ -72,6 +74,7 @@ class Routes extends Component {
                         <Scene path="/index" key="index" component={Index} title="首页" initial={true} icon={TabBarItemIcon} />
                         <Scene path="/user" key="user" component={My} title="我的" icon={TabBarItemIcon} />
                     </Tabs>
+                    <Scene key="login" component={Login} title="登录"/>
                 </Stack>
             </Router>
         );
