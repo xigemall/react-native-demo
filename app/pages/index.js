@@ -11,7 +11,7 @@ export default class Index extends Component {
             <View>
                 <WingBlank size="sm">
                     <Text>index</Text>
-                    <Button type="primary" onPress={() => Actions.my()}>go to</Button>
+                    <Button type="primary" onPress={() => Actions.login()}>go to</Button>
                     <Icon name='rowing' />
                 </WingBlank>
             </View>

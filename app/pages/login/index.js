@@ -42,6 +42,7 @@ export default class UserInfo extends Component {
                         maxLength={50}
                         defaultValue={password}
                         // value={password}
+                        onSubmitEditing={this.onSubmit}
                     />
                     <Button title="登录" onPress={this.onSubmit}/>
                 </View>
