@@ -9,7 +9,7 @@ export default StyleSheet.create({
 
     main:{
         alignItems:'center',
-        marginTop:'15%',
+        marginTop:'10%',
     },
 
     title:{
@@ -18,6 +18,7 @@ export default StyleSheet.create({
     },
 
     form:{
-        padding:30
+        paddingLeft:30,
+		paddingRight:30,
     }
 })

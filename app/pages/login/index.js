@@ -28,7 +28,7 @@ export default class UserInfo extends Component {
                     <Input
                         placeholder="请输入手机"
                         inputStyle={{color:'#fff'}}
-                        containerStyle={{height:80}}
+                        containerStyle={{height:70}}
                         placeholderTextColor="#fff"
                         maxLength={20}
                         defaultValue={user}
@@ -37,7 +37,7 @@ export default class UserInfo extends Component {
                     <Input
                         placeholder="请输入密码"
                         inputStyle={{color:'#fff'}}
-                        containerStyle={{height:80}}
+                        containerStyle={{height:70}}
                         placeholderTextColor="#fff"
                         maxLength={50}
                         defaultValue={password}

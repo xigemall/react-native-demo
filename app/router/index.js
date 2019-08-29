@@ -71,10 +71,10 @@ class Routes extends Component {
                         {...tabsAttr}
                         // navBar={NavBar}
                     >
-                        <Scene path="/index" key="index" component={Index} title="首页" initial={true} icon={TabBarItemIcon} />
+                        <Scene path="/index" key="index" component={Index} title="首页"  icon={TabBarItemIcon} initial={true}/>
                         <Scene path="/user" key="user" component={My} title="我的" icon={TabBarItemIcon} />
                     </Tabs>
-                    <Scene key="login" component={Login} title="登录"/>
+                    <Scene key="login" component={Login} title="登录" />
                 </Stack>
             </Router>
         );
