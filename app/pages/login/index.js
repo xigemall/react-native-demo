@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import {View, ImageBackground, Alert} from 'react-native';
 import {Text, Input, Avatar, Button} from 'react-native-elements';
 import {createForm} from 'rc-form';
+import request from '../../utils/request';
 
 import style from './style';
 
-// @createForm()
 
 class UserInfo extends Component {
     constructor(props){
@@ -20,6 +20,12 @@ class UserInfo extends Component {
         validateFields((err,value)=>{
             if(!err){
                 Alert.alert(JSON.stringify(value))
+                // const result = request('http://192.168.0.25:3000/api/login',{
+                //     method:'POST',
+                //     body:value
+                // },(result)=>{
+                //     Alert.alert('call',JSON.stringify(result))
+                // });
             }
         })
 
