@@ -5,20 +5,22 @@ import {createForm} from 'rc-form';
 import request from '../../utils/request';
 
 import style from './style';
+import {Actions} from "react-native-router-flux";
 
 
 class UserInfo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            user:'',
-            password:''
+            user: '',
+            password: ''
         }
     }
+
     onSubmit = () => {
         const {validateFields} = this.props.form;
-        validateFields((err,value)=>{
-            if(!err){
+        validateFields((err, value) => {
+            if (!err) {
                 Alert.alert(JSON.stringify(value))
                 // const result = request('http://192.168.0.25:3000/api/login',{
                 //     method:'POST',
@@ -46,7 +48,7 @@ class UserInfo extends Component {
         const backgroundImageUri = require('../../assets/login.jpg');
         const logo = require('../../assets/logo.jpg');
         const {user, password} = this.state;
-        const {getFieldProps,getFieldError,setFieldsValue} = this.props.form;
+        const {getFieldProps, getFieldError, setFieldsValue} = this.props.form;
         return (
             <ImageBackground source={backgroundImageUri} style={style.container}>
                 <View style={style.main}>
@@ -61,14 +63,16 @@ class UserInfo extends Component {
                         placeholderTextColor="#DDE9FF"
                         maxLength={20}
                         errorMessage={getFieldError('user')}
-                        onChangeText={(text)=>{setFieldsValue({user:text})}}
+                        onChangeText={(text) => {
+                            setFieldsValue({user: text})
+                        }}
                         {
-                            ...getFieldProps('user',{
-                                initialValue:user,
-                                rules:[
+                            ...getFieldProps('user', {
+                                initialValue: user,
+                                rules: [
                                     {
-                                        required:true,
-                                        message:'不能为空',
+                                        required: true,
+                                        message: '不能为空',
                                     }
                                 ]
                             })
@@ -80,23 +84,29 @@ class UserInfo extends Component {
                         containerStyle={{height: 70}}
                         placeholderTextColor="#DDE9FF"
                         maxLength={50}
-                        onChangeText={(text)=>{setFieldsValue({password:text})}}
+                        onChangeText={(text) => {
+                            setFieldsValue({password: text})
+                        }}
                         errorMessage={getFieldError('password')}
                         secureTextEntry
                         onSubmitEditing={this.onSubmit}
                         {
-                            ...getFieldProps('password',{
-                                initialValue:password,
-                                rules:[
+                            ...getFieldProps('password', {
+                                initialValue: password,
+                                rules: [
                                     {
-                                        required:true,
-                                        message:'不能为空',
+                                        required: true,
+                                        message: '不能为空',
                                     }
                                 ]
                             })
                         }
                     />
                     <Button title="登录" onPress={this.onSubmit}/>
+                    <View style={{flex: 1, flexDirection: "row", justifyContent: "space-between", marginTop: 15}}>
+                        <Button title="忘记密码" type="clear" titleStyle={{color: '#FFF'}}/>
+                        <Button title="注册" type="clear" titleStyle={{color: '#FFF'}} onPress={()=>Actions.register()}/>
+                    </View>
                 </View>
             </ImageBackground>
         );
