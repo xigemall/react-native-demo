@@ -9,8 +9,6 @@
     "build-android": "cd android & gradlew assembleRelease"
   },
   "dependencies": {
-    "@ant-design/icons-react-native": "^1.0.2",
-    "@ant-design/react-native": "^3.1.15",
     "rc-form": "^2.4.8",
     "react": "16.8.6",
     "react-native": "0.60.4",

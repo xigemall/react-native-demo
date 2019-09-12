@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {BackHandler, ToastAndroid, Platform, Alert,Text,View} from 'react-native';
 import {Router, Stack, Scene, Tabs, Actions} from 'react-native-router-flux';
-import { Icon} from '@ant-design/react-native';
+import { Icon} from 'react-native-elements';
 
 import Index from '../pages';
 import My from '../pages/user';
@@ -58,7 +58,7 @@ class Routes extends Component {
             if(path === '/index'){
                 return <Icon name="home" color={tintColor}/>
             }else if(path === '/user'){
-                return <Icon name="user" color={tintColor}/>
+                return <Icon name="android" color={tintColor}/>
             }
         };
 
