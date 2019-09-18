@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
-import {BackHandler, ToastAndroid, Platform, Alert,Text,View} from 'react-native';
-import {Router, Stack, Scene, Tabs, Actions} from 'react-native-router-flux';
-import { Icon} from 'react-native-elements';
+import React, { Component } from 'react';
+import { BackHandler, ToastAndroid, Platform, Alert, Text, View } from 'react-native';
+import { Router, Stack, Scene, Tabs, Actions } from 'react-native-router-flux';
+import { Icon } from 'react-native-elements';
 
 import Index from '../pages';
 import My from '../pages/user';
@@ -46,7 +46,7 @@ class Routes extends Component {
 
     render() {
         const tabsAttr = Platform.OS === 'ios' ?
-            {back: true, onBack: this.onExitApp}
+            { back: true, onBack: this.onExitApp }
             :
             {};
 
@@ -54,10 +54,10 @@ class Routes extends Component {
             // 允许在Android中自定义控制返回按钮
             backAndroidHandler: this.backAndroidHandler,
         };
-        const TabBarItemIcon = ({tintColor,path,title,focused})=>{
-            if(path === '/index'){
+        const TabBarItemIcon = ({ tintColor, path, title, focused }) => {
+            if (path === '/index') {
                 return <Icon name="home" color={tintColor}/>
-            }else if(path === '/user'){
+            } else if (path === '/user') {
                 return <Icon name="android" color={tintColor}/>
             }
         };
@@ -70,13 +70,14 @@ class Routes extends Component {
                     <Tabs
                         hideNavBar={true}
                         {...tabsAttr}
-                        // navBar={NavBar}
+                        navBar={() => <NavBar/>}
                     >
-                        <Scene path="/index" key="index" component={Index} title="首页"  icon={TabBarItemIcon} initial={true}/>
-                        <Scene path="/user" key="user" component={My} title="我的" icon={TabBarItemIcon} />
+                        <Scene path="/index" key="index" component={Index} title="首页" icon={TabBarItemIcon}
+                               initial={true}/>
+                        <Scene path="/user" key="user" component={My} title="我的" icon={TabBarItemIcon}/>
                     </Tabs>
-                    <Scene key="login" component={Login} title="登录" />
-                    <Scene key="register" component={Register} title="注册" />
+                    <Scene key="login" component={Login} title="登录"/>
+                    <Scene key="register" component={Register} title="注册"/>
                 </Stack>
             </Router>
         );

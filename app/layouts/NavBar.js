@@ -1,20 +1,18 @@
-import React, {Component} from 'react';
-import {View, Text,Alert,StatusBar} from 'react-native';
-import {Header} from 'react-native-elements';
+import React, { Component } from 'react';
+import { View, Text, Alert, StatusBar, CameraRoll, PermissionsAndroid } from 'react-native';
+import {Icon} from 'react-native-elements';
+import NavBar from '../components/NavBar/Index';
 
 export default class Index extends Component {
 
     render() {
         return (
-            <View>
-                <StatusBar backgroundColor="blue" barStyle="light-content" />
-                <Header
-                    leftComponent={{ icon: 'menu', color: '#fff',onPress:()=>{Alert.alert('eee')} }}
-                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                <NavBar
+                    leftComponent={{ icon: 'menu', color: '#fff' }}
+                    centerComponent={{ text: '首页', style: { color: '#fff' } }}
                     rightComponent={{ icon: 'home', color: '#fff' }}
+                    {...this.props}
                 />
-                {this.props.children}
-            </View>
         );
     }
 }
