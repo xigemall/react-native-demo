@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Alert, StatusBar, CameraRoll, PermissionsAndroid } from 'react-native';
+import { View, Text, Alert, StatusBar, CameraRoll, PermissionsAndroid,ToastAndroid } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 import NavBar from '../components/NavBar/Index';
@@ -15,7 +15,9 @@ export default class Index extends Component {
                 <NavBar
                     leftComponent={{ icon: 'home', color: '#fff' }}
                     centerComponent={{ text: title, style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'menu', color: '#fff' }}
+                    rightComponent={{ icon: 'menu', color: '#fff',onPress:()=>{
+                            ToastAndroid.show('3d',ToastAndroid.SHORT)
+                        } }}
                     statusBarProps={{backgroundColor:'#181818'}}
                     {...this.props}
                 />
