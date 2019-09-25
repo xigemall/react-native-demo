@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BackHandler, ToastAndroid, Platform, Alert, Text, View,Image } from 'react-native';
+import { BackHandler, ToastAndroid, Platform, Alert, Text, View, Image } from 'react-native';
 import { Router, Stack, Scene, Tabs, Actions } from 'react-native-router-flux';
 import { Icon } from 'react-native-elements';
 
 import Index from '../pages';
 import My from '../pages/user';
 import NavBar from '../layouts/NavBar';
-import {BackNavBar} from '../components/NavBar/Index'
+import { BackNavBar } from '../components/NavBar/Index'
 
 import Login from '../pages/login';
 import Register from "../pages/register";
@@ -67,8 +67,11 @@ class Routes extends Component {
             <Router
                 {...routerAttr}
             >
-                <Stack key="root" navBar={()=><BackNavBar/>}>
+                <Stack
+                    navBar={() => <BackNavBar/>}
+                >
                     <Tabs
+                        key="root"
                         hideNavBar={true}
                         {...tabsAttr}
                         navBar={() => <NavBar/>}
@@ -77,7 +80,7 @@ class Routes extends Component {
                                initial={true}/>
                         <Scene path="/user" key="user" component={My} title="我的" icon={TabBarItemIcon}/>
                     </Tabs>
-                    <Scene key="login" component={Login} title="登录"  />
+                    <Scene key="login" component={Login} title="登录"/>
                     <Scene key="register" component={Register} title="注册"/>
                 </Stack>
             </Router>
