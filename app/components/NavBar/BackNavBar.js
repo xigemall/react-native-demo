@@ -6,12 +6,14 @@ export default class BackNavBar extends Component {
 
     render() {
         let props = this.props;
-        if(props.leftComponent) {
+        if (props.leftComponent) {
             props.leftComponent.onPress = () => Actions.pop()
         }
+        const { currentParams: { title } } = Actions;
         return (
             <Header
-                leftComponent = {{ icon: 'chevron-left', color: '#fff', onPress: () => Actions.pop() }}
+                leftComponent={{ icon: 'chevron-left', color: '#fff', onPress: () => Actions.pop() }}
+                centerComponent={{ text: title, style: { color: '#fff' } }}
                 {...props}
             />
         );
