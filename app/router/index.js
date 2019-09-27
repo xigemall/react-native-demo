@@ -11,6 +11,8 @@ import { BackNavBar } from '../components/NavBar/Index'
 import Login from '../pages/login';
 import Register from "../pages/register";
 
+import Images from '../pages/images/Index';
+
 class Routes extends Component {
 
     /**
@@ -82,6 +84,8 @@ class Routes extends Component {
                     </Tabs>
                     <Scene key="login" component={Login} title="登录"/>
                     <Scene key="register" component={Register} title="注册"/>
+
+                    <Scene key="images" component={Images} title="图片"/>
                 </Stack>
             </Router>
         );
