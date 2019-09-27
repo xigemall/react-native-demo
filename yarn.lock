@@ -5453,6 +5453,11 @@ react-native-elements@^1.2.1:
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
 
+react-native-image-crop-picker@^0.25.2:
+  version "0.25.2"
+  resolved "https://registry.npm.taobao.org/react-native-image-crop-picker/download/react-native-image-crop-picker-0.25.2.tgz#241e598e6bd601248c319483c19508f9bc9a203e"
+  integrity sha1-JB5ZjmvWASSMMZSDwZUI+byaID4=
+
 react-native-image-pan-zoom@^2.1.9:
   version "2.1.11"
   resolved "https://registry.npm.taobao.org/react-native-image-pan-zoom/download/react-native-image-pan-zoom-2.1.11.tgz#61bcb69219d95e76a9797d23e4a2e8e0bd654ae9"
