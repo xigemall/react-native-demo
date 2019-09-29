@@ -1,52 +1,73 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    Dimensions,
+} from 'react-native';
 import {
     Image
 } from 'react-native-elements';
 import ImageViewer from '../../components/ImageViewer/ImageViewer';
+
+const { width } = Dimensions.get('window');
 
 export default class Index extends Component {
 
     state = {
         data: [
             {
-              props:{
-                  source:require('../../assets/logo.jpg'),
-              }
+                props: {
+                    source: require('../../assets/logo.jpg'),
+                }
             },
             {
-                props:{
-                    source:require('../../assets/login.jpg'),
+                props: {
+                    source: require('../../assets/login.jpg'),
+                }
+            },
+            {
+                props: {
+                    source: require('../../assets/logo.jpg'),
+                }
+            },
+            {
+                props: {
+                    source: require('../../assets/login.jpg'),
                 }
             },
         ],
-        isVisible:false,
-        currentIndex:0,
+        isVisible: false,
+        currentIndex: 1,
     };
 
-    openImageViewer = (CurrentIndex) =>{
-        this.setState({isVisible:true,CurrentIndex});
+    openImageViewer = (currentIndex) => {
+        this.setState({ isVisible: true, currentIndex });
     };
 
-    closeImageViewer = () =>{
-        this.setState({isVisible:false});
+    closeImageViewer = () => {
+        this.setState({ isVisible: false });
     };
 
     render() {
-        const { data,isVisible,currentIndex } = this.state;
+        const { data, isVisible, currentIndex } = this.state;
         return (
             <View>
-                <View>
+                <View style={style.imageList}>
 
                     {
                         data.map((v, i) => {
                             return (
-                                <TouchableOpacity onPress={()=>this.openImageViewer(i)}>
-                                <Image
+                                <TouchableOpacity
                                     key={i}
-                                    source={v.props.source}
-                                    style={{ width: 200, height: 200 }}
-                                />
+                                    onPress={() => this.openImageViewer(i)}
+                                    style={style.imageItem}
+                                >
+                                    <Image
+                                        source={v.props.source}
+                                        style={{ width: '100%', height: '100%' }}
+                                    />
                                 </TouchableOpacity>
                             );
                         })
@@ -63,3 +84,16 @@ export default class Index extends Component {
         );
     }
 }
+
+const style = StyleSheet.create({
+    imageList: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    imageItem: {
+        width: width / 4,
+        height: 100,
+        padding: 2,
+    }
+});
